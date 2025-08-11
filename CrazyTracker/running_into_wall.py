@@ -14,7 +14,6 @@ class RunningIntoWall(Condition):
         moving_forward = self.bot.get_speed() > 0.
         my_x, my_y = self.bot.get_x(), self.bot.get_y()
         wall_distances = [my_x, self.bot.get_arena_width() - my_x, my_y, self.bot.get_arena_height() - my_y]
-        print(wall_distances)
         direction = self.bot.get_direction()
         heading_left = direction > 90 and direction < 270
         heading_right = direction < 90 or direction > 270
