@@ -41,7 +41,7 @@ class CrazyTracker(ba.Bot):
 
 
 async def main():
-    b = CrazyTracker(server_secret='RECTjjm7ntrLpoYFh+kDuA/LHONbTYsLEnLMbuCnaU')
+    b = CrazyTracker()
     await b.start()
 
 

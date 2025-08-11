@@ -9,15 +9,19 @@ class Driver(Actor):
     def __init__(self, *args: Any, **kwargs: Any):
         super().__init__(*args, **kwargs)
         self._turn_target = -180
+        self._running = False
 
     def apply(self) -> None:
-        if not self.bot.target_speed or RunningIntoWall(self.bot).test():
+        if not self._running:
+            self.bot.set_forward(40000)
+            self._running = True
+        if RunningIntoWall(self.bot).test():
             self._reverse_direction()
         self._maybe_execute_new_turn()
 
         
     def _reverse_direction(self) -> None:
-        if self.bot.target_speed is not None and self.bot.target_speed > 0.0:
+        if self.bot.target_speed > 0.0:
             self.bot.set_back(40000)
         else:
             self.bot.set_forward(40000)
